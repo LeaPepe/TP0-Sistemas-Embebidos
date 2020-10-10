@@ -68,11 +68,14 @@ float shape_distance_from(shape_t *me, shape_t *shape){
 }
 
 bool shape_plot(shape_t *me, image_t *image){
-	
 	// for each coordinate, draw the pixel
-	for(int i=0; i<me->array.n_array; i++){
+	
+	for(uint32_t i=0; i<me->array.n_array; i++){
+		//printf("%i\n",i);
+		//printf("%i\n",me->array.n_array);
 		coordinate_t* pixel = &me->array.coordinates[i];
-		// if pixel out of bounds, dont draw it
+		
+		//if pixel out of bounds, dont draw it
 		if((pixel->x >= 0 || pixel->x < image->n_cols) && (pixel->y >= 0 || pixel->y < image->n_rows)){
 			image_write(image,pixel->y,pixel->x,HIGH); 
 		}

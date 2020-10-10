@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 #include "image.h"
+#include "line.h"
 
 
 #define MAX_IMG_NAME	20
@@ -15,17 +16,23 @@ int main(void){
 	
 	image_t img;
 	int img_count=0;
+	line_t line;
 	char img_name[MAX_IMG_NAME];
-
-	for(int l=10; l<180; l=l+2){
-
+	
+	//printf("Main");
+	// Construyo una linea
+	line_ctor(&line,0,0,10,100);
+	
+	for(int i=0; i<10; i++){
+		//printf("For");
 		// Construyo el objeto "imagen"
 		image_ctor(&img,N_ROWS,N_COLS); 
 
-		// Lo modifico como yo quiera
-		for(int i=0; i<l; i++){
-			image_write(&img,i,i,HIGH); 
-		}
+		// muevo la linea
+		//line_move(&line,1,3);
+		
+		// la imprimo en la imagen
+		line_plot(&line,&img);
 		
 		// Lo guardo en un archivo
 		sprintf(img_name,"./images/img%.3d.pbm",img_count); 

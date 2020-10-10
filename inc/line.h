@@ -3,6 +3,8 @@
 
 #include "shape.h"
 #include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /* Estructura principal que representa la clase "línea" */
 typedef struct {
@@ -39,4 +41,7 @@ bool line_scale(line_t *me, float factor);
 **/
 float line_get_lenght(line_t *me);
 
+bool line_move(line_t *me, uint32_t dx, uint32_t dy);
+
+bool line_plot(line_t *me, image_t *image);
 #endif
