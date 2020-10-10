@@ -5,7 +5,11 @@
 
 
 bool line_ctor(line_t *me, uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2){
-  // Completar
+	me->start.x = x1;
+	me->start.y = y1;
+	me->end.x = x2;
+	me->end.x = y2;
+	// Completar
 }
 
 

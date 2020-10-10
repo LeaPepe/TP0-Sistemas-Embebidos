@@ -2,7 +2,7 @@
 #include "shape.h"
 #include "image.h"
 
-
+// constructor
 bool shape_ctor(shape_t *me, coordinates_array_t *array, uint32_t position_x, uint32_t position_y){
 	
 	// position
@@ -24,12 +24,13 @@ bool shape_ctor(shape_t *me, coordinates_array_t *array, uint32_t position_x, ui
 	return true;
 }
 
-
+// destructor
 void shape_dtor(shape_t *me){
 	// free the only array
 	free(me->array.coordinates);
 }
 
+// move shape
 bool shape_move(shape_t *me, uint32_t dx, uint32_t dy){
 	
 	//make new array for moving 
@@ -55,6 +56,7 @@ bool shape_move(shape_t *me, uint32_t dx, uint32_t dy){
 	return true;
 }
 
+
 bool shape_rotate(shape_t *me, float angle){
 	// Completar
 	return true;
@@ -66,6 +68,14 @@ float shape_distance_from(shape_t *me, shape_t *shape){
 }
 
 bool shape_plot(shape_t *me, image_t *image){
-	// Completar
-	return true;
+	
+	// for each coordinate, draw the pixel
+	for(int i=0; i<me->array.n_array; i++){
+		coordinate_t* pixel = &me->array.coordinates[i];
+		// if pixel out of bounds, dont draw it
+		if((pixel->x >= 0 || pixel->x < image->n_cols) && (pixel->y >= 0 || pixel->y < image->n_rows)){
+			image_write(image,pixel->y,pixel->x,HIGH); 
+		}
+	}
+	return true;	
 }
