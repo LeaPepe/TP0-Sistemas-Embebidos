@@ -1,17 +1,17 @@
-#ifndef RECTANGLE_H
-#define RECTANGLE_H 
+#ifndef LINE_H
+#define LINE_H 
 
-#include "shape.h"
+
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "shape.h"
 
 /* Estructura principal que representa la clase "línea" */
 typedef struct {
 	shape_t super;			// Clase de la cual se hereda
 	coordinate_t start;		// Coordenada de origen
 	coordinate_t end;		// Coordenada de final
-	double m,b;
 } line_t;
 
 

@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include "shape.h"
-#include "image.h"
+
 
 // constructor
 bool shape_ctor(shape_t *me, coordinates_array_t *array, uint32_t position_x, uint32_t position_y){
@@ -77,8 +77,36 @@ bool shape_plot(shape_t *me, image_t *image){
 		
 		//if pixel out of bounds, dont draw it
 		if((pixel->x >= 0 || pixel->x < image->n_cols) && (pixel->y >= 0 || pixel->y < image->n_rows)){
+			printf("pixel = %i,%i",pixel->x,pixel->y);
 			image_write(image,pixel->y,pixel->x,HIGH); 
 		}
 	}
 	return true;	
+}
+
+bool coordinates_append(coordinates_array_t* array1, coordinates_array_t* array2){
+	
+	coordinate_t* coords;
+	
+	// alloc mem for appended array
+	size_t size = sizeof(coordinate_t)*(array1->n_array + array2->n_array);
+	if ( !(coords = (coordinate_t*)malloc(size) )){
+		return false;
+	}
+
+	// copy arrays
+	for(uint32_t i=0; i<array1->n_array; i++){
+		coords[i].x = array1->coordinates[i].x;
+		coords[i].y = array1->coordinates[i].y;
+	}
+	for(uint32_t i=0; i<array2->n_array; i++){
+		coords[i+array1->n_array].x = array1->coordinates[i].x;
+		coords[i+array1->n_array].y = array1->coordinates[i].y;
+	}
+	
+	// free old array and assign appended array
+	free(array1->coordinates);
+	array1->coordinates = coords;
+	array1->n_array = size;
+	return true;
 }

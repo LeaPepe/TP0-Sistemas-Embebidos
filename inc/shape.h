@@ -6,6 +6,7 @@
 #include <stdbool.h>
 #include "image.h"
 
+
 /* Coordenada de la imagen (punto en el espacio de 2D) */ 
 typedef struct {
 	uint32_t x; // Coordenada en x
@@ -60,4 +61,5 @@ float shape_distance_from(shape_t *me, shape_t *shape);
 **/
 bool shape_plot(shape_t *me, image_t *image);
 
+bool coordinates_append(coordinates_array_t* array1, coordinates_array_t* array2);
 #endif

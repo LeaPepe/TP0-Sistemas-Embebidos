@@ -2,7 +2,10 @@
 #define RECTANGLE_H 
 
 #include "shape.h"
+#include "line.h"
 #include <stdint.h>
+
+
 
 /* Estructura principal que representa la clase "rectángulo" */
 typedef struct {
@@ -24,6 +27,12 @@ bool rectangle_ctor(rectangle_t *me, uint32_t position_x, uint32_t position_y,
 *		@params: recibe el puntero al objeto y el valor en radianes a rotar.
 *		@return: Devuelve verdadero si la operación resultó exitosa.
 **/
+
+void rectangle_dtor(rectangle_t *me);
+
+bool rectangle_move(rectangle_t *me, uint32_t dx, uint32_t dy);
+
+
 bool rectangle_rotate(rectangle_t *me, float angle);
 
 
@@ -33,6 +42,6 @@ bool rectangle_rotate(rectangle_t *me, float angle);
 **/
 uint32_t rectangle_get_area(rectangle_t *me);
 
-
+bool rectangle_plot(rectangle_t *me, image_t *image);
 
 #endif
