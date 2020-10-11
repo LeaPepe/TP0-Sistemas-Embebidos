@@ -11,6 +11,7 @@ typedef struct {
 	shape_t super;			// Clase de la cual se hereda
 	coordinate_t start;		// Coordenada de origen
 	coordinate_t end;		// Coordenada de final
+	double m,b;
 } line_t;
 
 
@@ -20,7 +21,7 @@ typedef struct {
 **/
 bool line_ctor(line_t *me, uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2);
 
-
+void line_dtor(line_t *me);
 /** 	@brief: Rotar al segmento dejando fijo el punto de partida.
 *		@params: recibe el puntero al objeto y el ángulo a rotar
 *		@return: Devuelve verdadero si se realizó con éxito la operación

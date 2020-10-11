@@ -29,7 +29,7 @@ int main(void){
 		image_ctor(&img,N_ROWS,N_COLS); 
 
 		// muevo la linea
-		//line_move(&line,1,3);
+		line_move(&line,3,1);
 		
 		// la imprimo en la imagen
 		line_plot(&line,&img);

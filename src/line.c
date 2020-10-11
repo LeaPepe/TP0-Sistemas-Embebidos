@@ -4,6 +4,8 @@
 #include <math.h>
 
 
+
+// Constructor
 bool line_ctor(line_t *me, uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2){
 	
 	// validation: ToDo
@@ -19,8 +21,8 @@ bool line_ctor(line_t *me, uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2){
 	//parameters used
 	uint32_t dx = x2-x1;
 	uint32_t dy = y2-y1;
-	double m = dy/dx;
-	double b = -(m*x1) + y1;
+	me->m = dy/dx;
+	me->b = -(me->m*x1) + y1;
 	//build coordinates
 	
 	if(dx>dy){ // x is grater
@@ -32,8 +34,8 @@ bool line_ctor(line_t *me, uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2){
 		//coordinates
 		for(uint32_t i; i<dx; i++){
 			me->super.array.coordinates[i].x = me->start.x + i;
-			me->super.array.coordinates[i].y = round(m*me->super.array.coordinates[i].x + b);
-			printf("Punto(%i,%i)\n",me->super.array.coordinates[i].x,me->super.array.coordinates[i].y);
+			me->super.array.coordinates[i].y = round(me->m*me->super.array.coordinates[i].x + me->b);
+			//printf("Punto(%i,%i)\n",me->super.array.coordinates[i].x,me->super.array.coordinates[i].y);
 			me->super.array.n_array++;
 		}
 	} else {
@@ -45,7 +47,7 @@ bool line_ctor(line_t *me, uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2){
 		//coordinates
 		for(uint32_t i = 0; i<dy; i++){
 			me->super.array.coordinates[i].y = me->start.y + i;
-			me->super.array.coordinates[i].x = round((me->super.array.coordinates[i].y-b)/m);
+			me->super.array.coordinates[i].x = round((me->super.array.coordinates[i].y-me->b)/me->m);
 			printf("Punto(%i,%i)\n",me->super.array.coordinates[i].x,me->super.array.coordinates[i].y);
 			me->super.array.n_array++;
 		}
@@ -55,7 +57,12 @@ bool line_ctor(line_t *me, uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2){
 	return true;
 }
 
-
+// Destructor
+void line_dtor(line_t *me){
+	shape_dtor(&(me->super));
+	return;
+}
+	
 bool line_rotate(line_t *me, float angle){
   // Completar
 }
@@ -72,12 +79,12 @@ float line_get_lenght(line_t *me){
 
 bool line_move(line_t *me, uint32_t dx, uint32_t dy){
 	
-	// check coordinates move
+	// move coordinates
 	if(!shape_move(&me->super,dx,dy)){
 		return false;
 	}
 	
-	//start and end move
+	//move line points
 	me->start.x += dx;
 	me->end.x += dx;
 	me->start.y += dy;
