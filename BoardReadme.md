@@ -1,4 +1,5 @@
-### Carpeta board
+#Carpeta board
+
 
 Contiene las librerias y definiciones que se utilizan tanto por la placa (edu ciaa), como por el mismo chip lpc de nxp. Como toda carpeta de archivos C, en general las subcarpetas contienen la carpeta inc, donde van los headers que contienen las descripciones de las funciones y definiciones varias, y la carpeta src que contiene las implementaciones de las funciones descriptas. Adicionalmente contiene un archivo que le dice al compilador donde se encuentran todos los archivos a compilar. 
 
@@ -7,11 +8,11 @@ Contiene las librerias y definiciones que se utilizan tanto por la placa (edu ci
 Esta carpeta contiene las librerias de los drivers que facilita la compania que construye el chip. Los archivos pueden contener: funciones, definiciones de registros, constantes utiles, pines, etc. 
 Posee varios modulos utiles, asi como las configuraciones para los distintas caracteristicas que posee el micro. Entre ellas se describen las que, a mi criterio, son las principales:
 
-# Chip
+### Chip
 
 Definiciones propias del chip, ya que esta libreria contiene definiciones de varios chips, entre ellos el 43xx (M0 y M4) o 18xx. Dependiendo de la configuracion del usuario, seran las librerias que se utilicen
 
-# Clock
+### Clock
 
 Posee todo lo necesario para poder inicializar y configurar y realizar lecturas o escrituras en el clock del micro y sus derivados (PLL, divisor). Entre las definiciones principales se pueden destacar:
 - Funciones para inicializacion y configuracion del clock, pll, divisor.
@@ -19,11 +20,11 @@ Posee todo lo necesario para poder inicializar y configurar y realizar lecturas 
 - Frecuencias de operacion del clock o PLL.
 - Habilitar / Deshabilitar clock interno.
 
-#Registros
+###Registros
 - eeprom
 - rom
 
-# INTERRUPCIONES
+### INTERRUPCIONES
 
 Cuenta con diversas librerias de interrupciones, con funciones para inicializar y configurarlos.
 
@@ -32,7 +33,7 @@ Cuenta con diversas librerias de interrupciones, con funciones para inicializar 
 - Watchdog:
 - Externas
 
-# Comunicacion
+### Comunicacion
 
 - Serial GPIO
 - UART
@@ -42,18 +43,18 @@ Cuenta con diversas librerias de interrupciones, con funciones para inicializar 
 - Ethernet
 - USB
 
-# OTROS
+### OTROS
 
  - encriptacion AES
  - Libreria para displays LCD
  - Libreria para manejo de memorias SSD
  - Conversores ADC / DCA
 
- ## lpc_startup
+## lpc_startup
  
  Inicializaciones
  
  
- ## edu_ciaa_nxp
+## edu_ciaa_nxp
  
  Inicializacion y configuracion de los modulos utilizados en la placa. 
