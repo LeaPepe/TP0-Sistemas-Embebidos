@@ -20,7 +20,7 @@ Posee todo lo necesario para poder inicializar y configurar y realizar lecturas 
 - Frecuencias de operacion del clock o PLL.
 - Habilitar / Deshabilitar clock interno.
 
-###Registros
+### Registros
 - eeprom
 - rom
 
@@ -28,21 +28,23 @@ Posee todo lo necesario para poder inicializar y configurar y realizar lecturas 
 
 Cuenta con diversas librerias de interrupciones, con funciones para inicializar y configurarlos.
 
-- Timers: Alarmas, Cronometros, Repetitivos, etc.
-
-- Watchdog:
+- Timers [ [[H]](board/lpc_chip_43xx/inc/timer_18xx_43xx.h) | [[S]](board/lpc_chip_43xx/src/timer_18xx_43xx.c) ]. 
+- Alarmas
+- Cronometros
+- Repetitivos
+- Watchdog
 - Externas
 
 ### Comunicacion
 
 En general, estas librerias poseen la estructura de los registros, definiciones de mascaras, pines, interrupciones, etc. Funciones de configuracion, inicializacion, lectura, escritura para los distintos tipos de comunicaciones frecuentemente utilizadas.
 
-- UART/USART [[H](board/lpc_chip_43xx/inc/uart_18xx_43xx.h)|[S](board/lpc_chip_43xx/src/uart_18xx_43xx.c)]
-- I2C: Posee un [Header](board/lpc_chip_43xx/src/i2c_common_18xx_43xx.c) general, donde se define la estructura de los registros; y tambien funciones y definiciones para "Master-only" [[H](board/lpc_chip_43xx/inc/i2cm_18xx_43xx.h)|[S](board/lpc_chip_43xx/src/i2cm_18xx_43xx.c)] y "Slave-only" [[H](board/lpc_chip_43xx/inc/i2c_18xx_43xx.h)|[S](board/lpc_chip_43xx/src/i2c_18xx_43xx.c)]. 
-- SPI [[H](board/lpc_chip_43xx/inc/spi_18xx_43xx.h)|[S](board/lpc_chip_43xx/src/spi_18xx_43xx.c)].
-- Bus CAN [[H](board/lpc_chip_43xx/inc/ccan_18xx_43xx.h)|[S](board/lpc_chip_43xx/src/ccan_18xx_43xx.c)].
-- Ethernet [[H](board/lpc_chip_43xx/inc/enet_18xx_43xx.h)|[S](board/lpc_chip_43xx/src/enet_18xx_43xx.c)].
-- USB [[H](board/lpc_chip_43xx/inc/usbhs_18xx_43xx.h)|[S](board/lpc_chip_43xx/src/usbhs_18xx_43xx.c)].
+- UART/USART [ [[H]](board/lpc_chip_43xx/inc/uart_18xx_43xx.h) | [[S]](board/lpc_chip_43xx/src/uart_18xx_43xx.c) ]
+- I2C: Posee un [Header](board/lpc_chip_43xx/src/i2c_common_18xx_43xx.c) general, donde se define la estructura de los registros; y tambien funciones y definiciones para "Master-only" [[H](board/lpc_chip_43xx/inc/i2cm_18xx_43xx.h)|[S](board/lpc_chip_43xx/src/i2cm_18xx_43xx.c)] y "Slave-only" [ [[H]](board/lpc_chip_43xx/inc/i2c_18xx_43xx.h) | [[S]](board/lpc_chip_43xx/src/i2c_18xx_43xx.c) ]. 
+- SPI [ [[H]](board/lpc_chip_43xx/inc/spi_18xx_43xx.h) | [[S]](board/lpc_chip_43xx/src/spi_18xx_43xx.c) ].
+- Bus CAN [ [H](board/lpc_chip_43xx/inc/ccan_18xx_43xx.h) | [[S]](board/lpc_chip_43xx/src/ccan_18xx_43xx.c) ].
+- Ethernet [ [[H]](board/lpc_chip_43xx/inc/enet_18xx_43xx.h) | [[S]](board/lpc_chip_43xx/src/enet_18xx_43xx.c) ].
+- USB [ [[H]](board/lpc_chip_43xx/inc/usbhs_18xx_43xx.h)| [[S]](board/lpc_chip_43xx/src/usbhs_18xx_43xx.c) ].
 
 ### OTROS
 
