@@ -68,45 +68,46 @@ float shape_distance_from(shape_t *me, shape_t *shape){
 }
 
 bool shape_plot(shape_t *me, image_t *image){
-	// for each coordinate, draw the pixel
 	
+	// for each coordinate, draw the pixel
 	for(uint32_t i=0; i<me->array.n_array; i++){
-		//printf("%i\n",i);
-		//printf("%i\n",me->array.n_array);
-		coordinate_t* pixel = &me->array.coordinates[i];
 		
-		//if pixel out of bounds, dont draw it
+		coordinate_t* pixel = &(me->array.coordinates[i]); // pointer for tidyness
+		//if pixel inside image, draw pixel
 		if((pixel->x >= 0 || pixel->x < image->n_cols) && (pixel->y >= 0 || pixel->y < image->n_rows)){
-			printf("pixel = %i,%i",pixel->x,pixel->y);
-			image_write(image,pixel->y,pixel->x,HIGH); 
+			image_write(image,pixel->y,pixel->x,HIGH);  // draw pixel
 		}
 	}
-	return true;	
+	
+	return true;
+	//end plot
 }
 
 bool coordinates_append(coordinates_array_t* array1, coordinates_array_t* array2){
 	
-	coordinate_t* coords;
+	coordinate_t* coords = NULL;
 	
-	// alloc mem for appended array
-	size_t size = sizeof(coordinate_t)*(array1->n_array + array2->n_array);
-	if ( !(coords = (coordinate_t*)malloc(size) )){
+	// alloc mem for appended array(size1 + size2)
+	if ( !(coords = (coordinate_t*)malloc(sizeof(coordinate_t)*(array1->n_array + array2->n_array)) )){
 		return false;
 	}
-
+	
 	// copy arrays
 	for(uint32_t i=0; i<array1->n_array; i++){
 		coords[i].x = array1->coordinates[i].x;
 		coords[i].y = array1->coordinates[i].y;
 	}
 	for(uint32_t i=0; i<array2->n_array; i++){
-		coords[i+array1->n_array].x = array1->coordinates[i].x;
-		coords[i+array1->n_array].y = array1->coordinates[i].y;
+		coords[i+array1->n_array].x = array2->coordinates[i].x;
+		coords[i+array1->n_array].y = array2->coordinates[i].y;
 	}
 	
 	// free old array and assign appended array
-	free(array1->coordinates);
-	array1->coordinates = coords;
-	array1->n_array = size;
+	array1->n_array += array2->n_array;
+	if(array1->coordinates != NULL){ // empty array exception
+		free(array1->coordinates);
+	}
+	array1->coordinates = coords; // set new array
+	
 	return true;
 }

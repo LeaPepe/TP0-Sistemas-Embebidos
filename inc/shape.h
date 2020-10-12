@@ -61,5 +61,9 @@ float shape_distance_from(shape_t *me, shape_t *shape);
 **/
 bool shape_plot(shape_t *me, image_t *image);
 
+/** 	@brief: concatena dos arrays de coordenadas en el primero
+*		@params: Recibe el puntero ambos arreglos
+*		@return: verdadero si la operación se realizó exitosamente
+**/
 bool coordinates_append(coordinates_array_t* array1, coordinates_array_t* array2);
 #endif

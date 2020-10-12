@@ -13,31 +13,40 @@ bool rectangle_ctor(rectangle_t *me, uint32_t position_x, uint32_t position_y,
 	
 	// create 4 lines
 	line_t l1,l2,l3,l4;
+	
+	//horizontal
 	if(!line_ctor(&l1,position_x,position_y,position_x+width,position_y)){
 		return false;
 	}
-	if(!line_ctor(&l2,position_x,position_y,position_x,position_y+height)){
+	if(!line_ctor(&l2,position_x,position_y+height-1,position_x+width,position_y+height-1)){
 		return false;
 	}
-	if(!line_ctor(&l3,position_x+width,position_y,position_x+width,position_y+height)){
+	//vertical minus the extreme points
+	if(!line_ctor(&l3,position_x,position_y,position_x,position_y+height)){
 		return false;
 	}
-	if(!line_ctor(&l4,position_x,position_y+height,position_x+width,position_y+height)){
+
+	if(!line_ctor(&l4,position_x+width-1,position_y,position_x+width-1,position_y+height)){
 		return false;
 	}
 	
-	coordinates_array_t coords;
-	// append lines array to rectangle
-	if(!coordinates_append(&coords,&l1.super.array)){
+	
+	coordinates_array_t* coords = &(me->super.array);
+	coords->n_array = 0;
+	coords->coordinates = NULL;
+	
+	// append lines array to rectangle shape
+	if(!coordinates_append(coords,&l1.super.array)){
 		return false;
 	}
-	if(!coordinates_append(&coords,&l2.super.array)){
+	
+	if(!coordinates_append(coords,&l2.super.array)){
 		return false;
 	}
-	if(!coordinates_append(&coords,&l3.super.array)){
+	if(!coordinates_append(coords,&l3.super.array)){
 		return false;
 	}
-	if(!coordinates_append(&coords,&l4.super.array)){
+	if(!coordinates_append(coords,&l4.super.array)){
 		return false;
 	}
 	
@@ -62,9 +71,6 @@ bool rectangle_move(rectangle_t *me, uint32_t dx, uint32_t dy){
 		return false;
 	}
 	
-	//move position
-	me->super.position.x += dx;
-	me->super.position.y += dy;
 	return true;
 }
 bool rectangle_rotate(rectangle_t *me, float angle){
@@ -77,6 +83,5 @@ uint32_t rectangle_get_area(rectangle_t *me){
 }
 
 bool rectangle_plot(rectangle_t *me, image_t *image){
-	//printf("Plot line");
 	return shape_plot(&me->super,image);
 }
