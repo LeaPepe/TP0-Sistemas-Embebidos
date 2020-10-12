@@ -1,4 +1,4 @@
-#Carpeta board
+# Carpeta board
 
 
 Contiene las librerias y definiciones que se utilizan tanto por la placa (edu ciaa), como por el mismo chip lpc de nxp. Como toda carpeta de archivos C, en general las subcarpetas contienen la carpeta inc, donde van los headers que contienen las descripciones de las funciones y definiciones varias, y la carpeta src que contiene las implementaciones de las funciones descriptas. Adicionalmente contiene un archivo que le dice al compilador donde se encuentran todos los archivos a compilar. 
