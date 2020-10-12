@@ -27,8 +27,9 @@ Posee todo lo necesario para poder inicializar y configurar y realizar lecturas 
 ### Memoria
 
 - EEPROM [ [Header](board/lpc_chip_43xx/inc/eeprom_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/eeprom_18xx_43xx.c) ].
-- ROM  [[H1]](board/lpc_chip_43xx/inc/iap.h) | [H2]](board/lpc_chip_43xx/inc/iap_18xx_43xx.h) | Source](board/lpc_chip_43xx/src/iap_18xx_43xx.c)]
-- externa
+- ROM  [[H1]](board/lpc_chip_43xx/inc/iap.h) | [H2](board/lpc_chip_43xx/inc/iap_18xx_43xx.h) | Source](board/lpc_chip_43xx/src/iap_18xx_43xx.c)]
+- Externa [ [Header](board/lpc_chip_43xx/inc/emc_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/emc_18xx_43xx.c) ].
+- Flash [ [Header](board/lpc_chip_43xx/inc/fmc_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/fmc_18xx_43xx.c) ].
 
 ### Interrupciones
 
@@ -39,7 +40,16 @@ Cuenta con diversas librerias de interrupciones, con funciones para inicializar 
 - Cronometros [ [Header](board/lpc_chip_43xx/inc/atimer_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/atimer_18xx_43xx.c) ]. 
 - Repetitivos [ [Header](board/lpc_chip_43xx/inc/ritimer_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/ritimer_18xx_43xx.c) ].
 - Watchdog [ [Header](board/lpc_chip_43xx/inc/wwdt_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/wwdt_18xx_43xx.c) ].
-- Externas
+- Estado [ [Header](board/sct_chip_43xx/inc/dac_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/sct_18xx_43xx.c) ]
+- Eventos [ [Header](board/lpc_chip_43xx/inc/evrt_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/evrt_18xx_43xx.c) ].
+
+
+
+### Puertos
+
+- GPIO 
+- GPIO group
+ - Conversores ADC [ [Header](board/lpc_chip_43xx/inc/adc_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/adc_18xx_43xx.c) ] / DCA [ [Header](board/lpc_chip_43xx/inc/dac_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/dac_18xx_43xx.c) ]. y de alta velocidad HSADC [ [Header](board/lpc_chip_43xx/inc/hsadc_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/hsadc_18xx_43xx.c) ]
 
 ### Comunicacion
 
@@ -58,13 +68,16 @@ En general, estas librerias poseen la estructura de los registros, definiciones 
  - encriptacion AES [ [Header](board/lpc_chip_43xx/inc/aes_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/aes_18xx_43xx.c) ]. 
  - Libreria para displays LCD [ [Header](board/lpc_chip_43xx/inc/lcd_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/lcd_18xx_43xx.c) ]. 
  - Libreria para memorias SSD [ [Header](board/lpc_chip_43xx/inc/sdmmc_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/sdmmc_18xx_43xx.c) ]. 
- - Conversores ADC [ [Header](board/lpc_chip_43xx/inc/adc_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/adc_18xx_43xx.c) ] / DCA [ [Header](board/lpc_chip_43xx/inc/dac_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/dac_18xx_43xx.c) ] 
+ - PWM [ [Header](board/lpc_chip_43xx/inc/mcpwm_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/mcpwm_18xx_43xx.c) ].
+ - Power Management [ [Header](board/lpc_chip_43xx/inc/pmc_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/pmc_18xx_43xx.c) ].
+ - Codificador en Cuadratura [ [Header](board/lpc_chip_43xx/inc/qei_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/qei_18xx_43xx.c) ]
 
 ## lpc_startup
  
- Inicializaciones
+ Inicializacion de la placa. Utiliza una funcion para inicializar todo lo que se vaya a utilizar en la placa,y ya depende de funciones propias de la EDU-CIAA en este caso, ya que incluye *board.h* .
  
  
 ## edu_ciaa_nxp
  
- Inicializacion y configuracion de los modulos utilizados en la placa. 
+ Se definen todos los pines de la placa con sus respectivos nombres (LED, GPIO, I2C, etc.), frecuencias, debug mode, velocidades, etc.
+ Tambien se implementan las funciones de inicializacion del lpc_startup, es decir, lo que realiza la placa al iniciar: clock, mux, uart, etc.
