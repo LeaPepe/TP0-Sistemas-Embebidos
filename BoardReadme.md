@@ -10,9 +10,13 @@ Tambien posee varios modulos utiles que son generalmente utilizados en las aplic
 
 ### Chip
 
-Definiciones propias del chip, ya que esta libreria contiene definiciones de varios chips, entre ellos el 43xx (M0 y M4) o 18xx. Dependiendo de la configuracion del usuario, seran las librerias que se utilicen
+Definiciones propias del chip, ya que esta libreria contiene definiciones de varios chips, entre ellos el 43xx (M0 y M4) o 18xx. Dependiendo de la configuracion del usuario, seran las librerias que se utilicen.
 
-### Clock
+### CMSIS
+
+Cortex Microcontroller Software Interface Standard. Posee definiciones en general, y luego particulares tanto para 18xx como para 43xx.
+
+### Clock 
 
 Posee todo lo necesario para poder inicializar y configurar y realizar lecturas o escrituras en el clock del micro y sus derivados (PLL, divisor). Entre las definiciones principales se pueden destacar:
 - Funciones para inicializacion y configuracion del clock, pll, divisor.
@@ -20,39 +24,41 @@ Posee todo lo necesario para poder inicializar y configurar y realizar lecturas 
 - Frecuencias de operacion del clock o PLL.
 - Habilitar / Deshabilitar clock interno.
 
-### Registros
-- eeprom
-- rom
+### Memoria
 
-### INTERRUPCIONES
+- EEPROM [ [Header](board/lpc_chip_43xx/inc/eeprom_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/eeprom_18xx_43xx.c) ].
+- ROM  [[H1]](board/lpc_chip_43xx/inc/iap.h) | [H2]](board/lpc_chip_43xx/inc/iap_18xx_43xx.h) | Source](board/lpc_chip_43xx/src/iap_18xx_43xx.c)]
+- externa
+
+### Interrupciones
 
 Cuenta con diversas librerias de interrupciones, con funciones para inicializar y configurarlos.
 
-- Timers [ [[H]](board/lpc_chip_43xx/inc/timer_18xx_43xx.h) | [[S]](board/lpc_chip_43xx/src/timer_18xx_43xx.c) ]. 
-- Alarmas
-- Cronometros
-- Repetitivos
-- Watchdog
+- Timers [ [Header](board/lpc_chip_43xx/inc/timer_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/timer_18xx_43xx.c) ]. 
+- Alarmas [ [Header](board/lpc_chip_43xx/inc/atimer_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/atimer_18xx_43xx.c) ]. 
+- Cronometros [ [Header](board/lpc_chip_43xx/inc/atimer_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/atimer_18xx_43xx.c) ]. 
+- Repetitivos [ [Header](board/lpc_chip_43xx/inc/ritimer_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/ritimer_18xx_43xx.c) ].
+- Watchdog [ [Header](board/lpc_chip_43xx/inc/wwdt_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/wwdt_18xx_43xx.c) ].
 - Externas
 
 ### Comunicacion
 
 En general, estas librerias poseen la estructura de los registros, definiciones de mascaras, pines, interrupciones, etc. Funciones de configuracion, inicializacion, lectura, escritura para los distintos tipos de comunicaciones frecuentemente utilizadas.
 
-- UART/USART [ [[H]](board/lpc_chip_43xx/inc/uart_18xx_43xx.h) | [[S]](board/lpc_chip_43xx/src/uart_18xx_43xx.c) ]
-- I2C: Posee un [Header](board/lpc_chip_43xx/src/i2c_common_18xx_43xx.c) general, donde se define la estructura de los registros; y tambien funciones y definiciones para "Master-only" [[H](board/lpc_chip_43xx/inc/i2cm_18xx_43xx.h)|[S](board/lpc_chip_43xx/src/i2cm_18xx_43xx.c)] y "Slave-only" [ [[H]](board/lpc_chip_43xx/inc/i2c_18xx_43xx.h) | [[S]](board/lpc_chip_43xx/src/i2c_18xx_43xx.c) ]. 
-- SPI [ [[H]](board/lpc_chip_43xx/inc/spi_18xx_43xx.h) | [[S]](board/lpc_chip_43xx/src/spi_18xx_43xx.c) ].
-- Bus CAN [ [H](board/lpc_chip_43xx/inc/ccan_18xx_43xx.h) | [[S]](board/lpc_chip_43xx/src/ccan_18xx_43xx.c) ].
-- Ethernet [ [[H]](board/lpc_chip_43xx/inc/enet_18xx_43xx.h) | [[S]](board/lpc_chip_43xx/src/enet_18xx_43xx.c) ].
-- USB [ [[H]](board/lpc_chip_43xx/inc/usbhs_18xx_43xx.h)| [[S]](board/lpc_chip_43xx/src/usbhs_18xx_43xx.c) ].
+- UART/USART [ [Header](board/lpc_chip_43xx/inc/uart_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/uart_18xx_43xx.c) ]
+- I2C: Posee un [Header](board/lpc_chip_43xx/inc/i2c_common_18xx_43xx.h) general, donde se define la estructura de los registros; y tambien funciones y definiciones para "Master-only" [Header(board/lpc_chip_43xx/inc/i2cm_18xx_43xx.h)|Source(board/lpc_chip_43xx/src/i2cm_18xx_43xx.c)] y "Slave-only" [ [Header](board/lpc_chip_43xx/inc/i2c_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/i2c_18xx_43xx.c) ]. 
+- SPI [ [Header](board/lpc_chip_43xx/inc/spi_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/spi_18xx_43xx.c) ].
+- Bus CAN [ Header(board/lpc_chip_43xx/inc/ccan_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/ccan_18xx_43xx.c) ].
+- Ethernet [ [Header](board/lpc_chip_43xx/inc/enet_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/enet_18xx_43xx.c) ].
+- USB [ [Header](board/lpc_chip_43xx/inc/usbhs_18xx_43xx.h)| [Source](board/lpc_chip_43xx/src/usbhs_18xx_43xx.c) ].
 
-### OTROS
+### Otros
 
- - Real Time Clock: libreria para crear un reloj de tiempo real y otra para hacer pasaje de distintas zonas horarias
- - encriptacion AES
- - Libreria para displays LCD
- - Libreria para manejo de memorias SSD
- - Conversores ADC / DCA
+ - Real Time Clock: libreria para crear un reloj de tiempo real [ [Header](board/lpc_chip_43xx/inc/rtc_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/rtc_18xx_43xx.c) ].  y otra para hacer pasaje de distintas zonas horarias [Header](board/lpc_chip_43xx/inc/rtc_ut.h). 
+ - encriptacion AES [ [Header](board/lpc_chip_43xx/inc/aes_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/aes_18xx_43xx.c) ]. 
+ - Libreria para displays LCD [ [Header](board/lpc_chip_43xx/inc/lcd_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/lcd_18xx_43xx.c) ]. 
+ - Libreria para memorias SSD [ [Header](board/lpc_chip_43xx/inc/sdmmc_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/sdmmc_18xx_43xx.c) ]. 
+ - Conversores ADC [ [Header](board/lpc_chip_43xx/inc/adc_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/adc_18xx_43xx.c) ] / DCA [ [Header](board/lpc_chip_43xx/inc/dac_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/dac_18xx_43xx.c) ] 
 
 ## lpc_startup
  
