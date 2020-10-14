@@ -1,24 +1,31 @@
+#ifndef __SHAPE_CLASS_H__
+#define __SHAPE_CLASS_H__
+
 #include <stdbool.h>
+#include "pointClass.h"
+#include "imageClass.h"
 
 // 2D Shape
 class Shape
 {
 public:
-	Shape();
+	Shape(const Point*, const size_t, const int, const int);
 	Shape(const Shape);
 	~Shape(); 
 	
 	bool move(const int, const int);
-	int distanceFrom(const Shape) const;
+	float distanceFrom(const Shape) const;
 
 	bool rotate(const float);
 	void setPos(const int, const int);
-	bool plot(Img) const;
+	void plot(Image) const;
 	
 private:
-	Point* points_;
-	size_t nPoints_;
-	Point pos_;
+	Point* points;
+	size_t nPoints;
+	Point pos;
 	
 	bool append(const Shape);
 };
+
+#endif

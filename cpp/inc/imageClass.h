@@ -15,15 +15,16 @@ class Image
 {
 public:
 	Image(const size_t,const size_t);
-	Image(const Image);
 	~Image(); 
 	
 	void write(const uint32_t, const uint32_t, const state_t);
-	state_t read(const uint32_t x,const uint32_t y) const;
+	state_t read(const uint32_t,const uint32_t) const;
 	
 	friend std::ostream& operator<<(std::ostream&,const Image&);
 	
 private:
-	state_t** data_;
-	size_t nRows_,nCols_;
+	state_t** data;
+	size_t nRows,nCols;
 };
+
+#endif

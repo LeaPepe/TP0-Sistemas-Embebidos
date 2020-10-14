@@ -1,3 +1,8 @@
+#ifndef __LINE_CLASS_H__
+#define __LINE_CLASS_H__
+
+#define "shapeClass.h"
+
 // 2D Line
 class Line : public Shape
 {
@@ -8,8 +13,11 @@ public:
 	bool move(const int, const int);
 	bool rotate(const float);
 	bool scale(const float);
-	uint32_t getLength(void) const;
+	float getLength(void) const;
 	
 private:
+	float lerp(int,int,float);
 	Point start,end;
 };
+
+#endif

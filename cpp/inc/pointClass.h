@@ -1,3 +1,6 @@
+#ifndef __POINT_CLASS_H__
+#define __POINT_CLASS_H__
+
 #include <cstdlib>
 
 // 2D point
@@ -5,18 +8,24 @@ class Point
 {
 public:
 	Point();
-	Point(const int x, const int y); 
+	Point(const int, const int); 
 	Point(const Point); 
 	~Point(); 
 	
 	void set(const int, const int);
 	void setX(const int);
 	void setY(const int);
+	void add(const int, const int);
 	
 	int getX() const;
 	int getY() const;
 	
 	
+	Point& Point::operator+(const Point&);
+	Point& Point::operator=(const Point&){
+
 private:
-	int x_,y_;
+	int x,y;
 };
+
+#endif
