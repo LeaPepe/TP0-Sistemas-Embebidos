@@ -10,10 +10,8 @@ class Line : public Shape
 public:
 	Line(const int,const int,const int,const int);
 	~Line(); 
-	
-	bool move(const int, const int);
-	bool rotate(const float);
-	bool scale(const float);
+	void move(const int, const int);
+	void scale(const float);
 	float getLength(void) const;
 	
 private:

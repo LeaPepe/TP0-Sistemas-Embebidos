@@ -8,9 +8,7 @@ class Rect : public Shape
 {
 public:
 	Rect(const int,const int,const uint32_t,const uint32_t);
-	~Rect(); 
-	
-	bool rotate(float angle);
+	~Rect();
 	uint32_t getArea(void) const;
 	
 private:

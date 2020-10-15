@@ -64,7 +64,7 @@ std::ostream& operator<<(std::ostream& os,const Image& img){
 	// binary matrix
 	for(uint32_t i=0; i<img.nCols; i++){
 		for(uint32_t j=0; j<img.nRows; j++){
-			os << img.read(i, j);
+			os << img.read(i, j) << " ";
 		}
 		os << "\n";
 	}

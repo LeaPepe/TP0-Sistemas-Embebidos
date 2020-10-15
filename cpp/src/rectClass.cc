@@ -35,11 +35,6 @@ Rect::~Rect(){
 	// parent takes care
 }
 
-bool Rect::rotate(float angle){
-	// completar
-	return true;
-}
-
 uint32_t Rect::getArea(void) const{
 	return width*height;
 }

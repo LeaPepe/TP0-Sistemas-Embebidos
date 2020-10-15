@@ -15,10 +15,10 @@ public:
 	Shape(const Shape&);
 	~Shape(); 
 	
-	bool move(const int, const int);
+	void move(const int, const int);
 	float distanceFrom(const Shape) const;
 
-	bool rotate(const float);
+	void rotate(const float);
 	void setPos(const int, const int);
 	void plot(Image*) const;
 

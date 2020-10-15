@@ -3,7 +3,7 @@
 SRC = $(wildcard src/*)
 OBJECTS = $(foreach file, $(SRC), out/$(basename $(notdir $(file))).o)
 
-CC = gcc
+CC = g++
 CFLAGS = -Wall -Iinc
 
 all: out $(OBJECTS)

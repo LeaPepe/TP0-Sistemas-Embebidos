@@ -53,25 +53,13 @@ Shape::~Shape(){
 
 
 // Functions
-bool Shape::move(const int dx, const int dy){
-	// alloc mem for moved points
-	Point* newPoints;
-	if ( !(newPoints = (Point*)malloc(sizeof(Point)*nPoints)) ){
-		return false;
-	}
-
+void Shape::move(const int dx, const int dy){
 	// move each point
 	for(size_t i=0; i<nPoints; i++){
-		points[i].add(dx,dy);
+		points[i].add(dx,dy); // add delta
 	}
-	
-	//move position
+	//move position also
 	pos.add(dx,dy);
-	
-	//destroy and replace
-	free(points);
-	points = newPoints;
-	return true;
 }
 
 
@@ -80,9 +68,17 @@ float Shape::distanceFrom(const Shape s) const{
 }
 
 
-bool Shape::rotate(const float){
-	// Completar
-	return true;
+void Shape::rotate(const float angle){
+	float cosTheta = cos(angle);
+    float sinTheta = sin(angle);
+	Point pivot(pos);
+	int xn,yn;
+	for(size_t i=0; i<nPoints; i++){
+		xn = (int)(cosTheta * (points[i].getX() - pivot.getX()) - sinTheta * (points[i].getY() - pivot.getY()) + pivot.getX());
+		yn = (int)(sinTheta * (points[i].getX() - pivot.getX()) + cosTheta * (points[i].getY() - pivot.getY()) + pivot.getY());
+		points[i].setX(round(xn));
+		points[i].setY(round(yn));
+	}
 }
 
 void Shape::setPos(const int x, const int y){
@@ -90,7 +86,7 @@ void Shape::setPos(const int x, const int y){
 }
 
 void Shape::plot(Image* img)const{
-	// for each coordinate, draw the pixel
+	// for each point, draw the pixel
 	for(size_t i=0; i<nPoints; i++){
 
 

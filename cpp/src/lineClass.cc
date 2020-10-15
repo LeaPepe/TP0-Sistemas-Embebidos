@@ -21,8 +21,7 @@ Line::Line(const int x1,const int y1, const int x2, const int y2){
 	
 	//coordinates
 	for(size_t i = 0; i<nPoints; i++){
-		points[i].setX((int)round(lerp(x1,x2,i*step)));
-		points[i].setY((int)round(lerp(y1,y2,i*step)));
+		points[i].set((int)round(lerp(x1,x2,i*step)),(int)round(lerp(y1,y2,i*step)));
 	}
 	return; //true;
 }
@@ -31,25 +30,17 @@ Line::~Line(){
 	// parent takes care
 }
 
-bool Line::move(const int dx, const int dy){
+void Line::move(const int dx, const int dy){
 	// move shape
-	if(!Shape::move(dx,dy)){
-		return false;
-	}
+	Shape::move(dx,dy);
 	
 	//move line points
 	start.add(dx,dy);
 	end.add(dx,dy);
-	return true;
 }
 
-bool Line::rotate(const float){
+void Line::scale(const float){
 	// completar
-	return true;
-}
-bool Line::scale(const float){
-	// completar
-	return true;
 }
 float Line::getLength() const{
 	return sqrt(((start.getX() - end.getX())^2) + ((start.getY() - end.getY())^2));

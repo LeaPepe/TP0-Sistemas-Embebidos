@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #include "imageClass.h"
 #include "lineClass.h"
 #include "rectClass.h"

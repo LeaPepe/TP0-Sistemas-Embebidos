@@ -9,7 +9,7 @@ int main(void){
 	//create shapes
 	Line line(20,100,100,130);
 	Rect rect(40,120,60,40);
-	for(int i=0; i<50; i++){
+	for(int i=0; i<72; i++){ // 3 seconds
 		// new image
 		Image img(N_ROWS,N_COLS);
 		
@@ -19,7 +19,8 @@ int main(void){
 		// update
 		line.move(1,1);
 		rect.move(1,-1);
-		
+		//line.rotate(M_PI/4);
+		//rect.rotate(-M_PI/4);
 		// Lo guardo en un archivo
 		sprintf(img_name,"./images/img%.3d.pbm",nImages); 
 		img.toFile(img_name); 
