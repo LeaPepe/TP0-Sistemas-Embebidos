@@ -27,7 +27,7 @@ Posee todo lo necesario para poder inicializar y configurar y realizar lecturas 
 ### Memoria
 
 - EEPROM [ [Header](board/lpc_chip_43xx/inc/eeprom_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/eeprom_18xx_43xx.c) ].
-- ROM  [[H1]](board/lpc_chip_43xx/inc/iap.h) | [H2](board/lpc_chip_43xx/inc/iap_18xx_43xx.h) | Source](board/lpc_chip_43xx/src/iap_18xx_43xx.c)]
+- ROM  [[H1]](board/lpc_chip_43xx/inc/iap.h) | [H2](board/lpc_chip_43xx/inc/iap_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/iap_18xx_43xx.c)]
 - Externa [ [Header](board/lpc_chip_43xx/inc/emc_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/emc_18xx_43xx.c) ].
 - Flash [ [Header](board/lpc_chip_43xx/inc/fmc_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/fmc_18xx_43xx.c) ].
 
@@ -56,7 +56,7 @@ Cuenta con diversas librerias de interrupciones, con funciones para inicializar 
 En general, estas librerias poseen la estructura de los registros, definiciones de mascaras, pines, interrupciones, etc. Funciones de configuracion, inicializacion, lectura, escritura para los distintos tipos de comunicaciones frecuentemente utilizadas.
 
 - UART/USART [ [Header](board/lpc_chip_43xx/inc/uart_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/uart_18xx_43xx.c) ]
-- I2C: Posee un [Header](board/lpc_chip_43xx/inc/i2c_common_18xx_43xx.h) general, donde se define la estructura de los registros; y tambien funciones y definiciones para "Master-only" [Header](board/lpc_chip_43xx/inc/i2cm_18xx_43xx.h)|Source(board/lpc_chip_43xx/src/i2cm_18xx_43xx.c)] y "Slave-only" [ [Header](board/lpc_chip_43xx/inc/i2c_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/i2c_18xx_43xx.c) ]. 
+- I2C: Posee un [Header](board/lpc_chip_43xx/inc/i2c_common_18xx_43xx.h) general, donde se define la estructura de los registros; y tambien funciones y definiciones para "Master-only" [Header](board/lpc_chip_43xx/inc/i2cm_18xx_43xx.h)|[Source](board/lpc_chip_43xx/src/i2cm_18xx_43xx.c)] y "Slave-only" [ [Header](board/lpc_chip_43xx/inc/i2c_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/i2c_18xx_43xx.c) ]. 
 - SPI [ [Header](board/lpc_chip_43xx/inc/spi_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/spi_18xx_43xx.c) ].
 - Bus CAN [ Header(board/lpc_chip_43xx/inc/ccan_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/ccan_18xx_43xx.c) ].
 - Ethernet [ [Header](board/lpc_chip_43xx/inc/enet_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/enet_18xx_43xx.c) ].
