@@ -3,7 +3,7 @@
 
 Contiene las librerias y definiciones que se utilizan tanto por la placa EDU-CIAA, como por el mismo chip lpc de nxp. Como toda carpeta de archivos C, en general las subcarpetas contienen la carpeta inc, donde van los headers que contienen las descripciones de las funciones y definiciones varias; y la carpeta src que contiene las implementaciones de las funciones descriptas. Adicionalmente contiene un archivo que le dice al compilador donde se encuentran todos los archivos a compilar. 
 
-## lpc_chup_43xx
+## lpc_chip_43xx
 
 Esta carpeta contiene las librerias de los drivers que facilita la compania que construye el chip. Los archivos en general contienen: funciones, definiciones de registros de uso particular o general, constantes utiles, pines, etc. 
 Tambien posee varios modulos utiles que son generalmente utilizados en las aplicaciones de estos micros, asi como las configuraciones para los distintas caracteristicas que posee. 
@@ -56,7 +56,7 @@ Cuenta con diversas librerias de interrupciones, con funciones para inicializar 
 En general, estas librerias poseen la estructura de los registros, definiciones de mascaras, pines, interrupciones, etc. Funciones de configuracion, inicializacion, lectura, escritura para los distintos tipos de comunicaciones frecuentemente utilizadas.
 
 - UART/USART [ [Header](board/lpc_chip_43xx/inc/uart_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/uart_18xx_43xx.c) ]
-- I2C: Posee un [Header](board/lpc_chip_43xx/inc/i2c_common_18xx_43xx.h) general, donde se define la estructura de los registros; y tambien funciones y definiciones para "Master-only" [Header(board/lpc_chip_43xx/inc/i2cm_18xx_43xx.h)|Source(board/lpc_chip_43xx/src/i2cm_18xx_43xx.c)] y "Slave-only" [ [Header](board/lpc_chip_43xx/inc/i2c_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/i2c_18xx_43xx.c) ]. 
+- I2C: Posee un [Header](board/lpc_chip_43xx/inc/i2c_common_18xx_43xx.h) general, donde se define la estructura de los registros; y tambien funciones y definiciones para "Master-only" [Header](board/lpc_chip_43xx/inc/i2cm_18xx_43xx.h)|Source(board/lpc_chip_43xx/src/i2cm_18xx_43xx.c)] y "Slave-only" [ [Header](board/lpc_chip_43xx/inc/i2c_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/i2c_18xx_43xx.c) ]. 
 - SPI [ [Header](board/lpc_chip_43xx/inc/spi_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/spi_18xx_43xx.c) ].
 - Bus CAN [ Header(board/lpc_chip_43xx/inc/ccan_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/ccan_18xx_43xx.c) ].
 - Ethernet [ [Header](board/lpc_chip_43xx/inc/enet_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/enet_18xx_43xx.c) ].
@@ -64,7 +64,7 @@ En general, estas librerias poseen la estructura de los registros, definiciones 
 
 ### Otros
 
- - Real Time Clock: libreria para crear un reloj de tiempo real [ [Header](board/lpc_chip_43xx/inc/rtc_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/rtc_18xx_43xx.c) ].  y otra para hacer pasaje de distintas zonas horarias [Header](board/lpc_chip_43xx/inc/rtc_ut.h). 
+ - Real Time Clock: [ [Header](board/lpc_chip_43xx/inc/rtc_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/rtc_18xx_43xx.c) ].Driver para un reloj de tiempo, y una libreria para hacer pasaje de distintas zonas horarias [Header](board/lpc_chip_43xx/inc/rtc_ut.h). 
  - encriptacion AES [ [Header](board/lpc_chip_43xx/inc/aes_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/aes_18xx_43xx.c) ]. 
  - Libreria para displays LCD [ [Header](board/lpc_chip_43xx/inc/lcd_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/lcd_18xx_43xx.c) ]. 
  - Libreria para memorias SSD [ [Header](board/lpc_chip_43xx/inc/sdmmc_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/sdmmc_18xx_43xx.c) ]. 
