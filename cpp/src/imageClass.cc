@@ -1,18 +1,19 @@
-#include "image.h"
+#include "imageClass.h"
 
+// Constructor
 Image::Image(const size_t nCols_,const size_t nRows_){
 	nCols = nCols_;
 	nRows = nRows_;
 
 	// alloc memory for cols (pointers)
 	if ( !(data = (state_t **)malloc(sizeof(state_t*)*nCols)) ){
-		return false;
+		return ;//false;
 	}
 
 	// alloc memory for rows (bits)
 	for(size_t i=0; i<nCols; i++){
 		if ( !(data[i] = (state_t *)malloc(sizeof(state_t)*nRows)) ){
-			return false;
+			return; //false;
 		}
 		
 		// zero initialize
@@ -20,8 +21,10 @@ Image::Image(const size_t nCols_,const size_t nRows_){
 			write(i, j, LOW);
 		}
 	}
-	return true;
+	return; //true;
+}
 
+// Destructor
 Image::~Image(){
 	// free data cols
 	for(size_t i=0; i<nCols; i++){
@@ -31,30 +34,39 @@ Image::~Image(){
 	free(data);
 }
 
-void Image::write(const uint32_t x, const uint32_t y, const value){
+void Image::write(const uint32_t x, const uint32_t y, const state_t value){
 	data[x][y] = value;
 }
 
-state_t Image::read(const uint32_t,const uint32_t) const{
+state_t Image::read(const uint32_t x,const uint32_t y) const{
 	return data[x][y];
 }
 
-void toFile(const char* file){
+void Image::toFile(const char* filename){
 	
-	FILE* ptr;
-	ptr = fopen(file, "w+");
-	ptr << *this;
+	std::ofstream file;
+	file.open(filename);
+	file << *this;
 
 }
 
-friend std::ostream& operator<<(std::ostream& os,const Image& img){
+size_t Image::getRows(){
+	return nRows;
+}
+
+size_t Image::getCols(){
+	return nCols;
+}
+
+std::ostream& operator<<(std::ostream& os,const Image& img){
 	//preamble
-	os << "P1\n" + img.nCols + " " + img.nRows + "\n";
+	os << "P1\n" << img.nCols << " " << img.nRows << "\n";
 	// binary matrix
-	for(uint32_t i=0; i<n_cols; i++){
-		for(uint32_t j=0; j<n_rows; j++){
-			os << img.read(i, j)
+	for(uint32_t i=0; i<img.nCols; i++){
+		for(uint32_t j=0; j<img.nRows; j++){
+			os << img.read(i, j);
 		}
 		os << "\n";
 	}
+	return os;
 }

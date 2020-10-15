@@ -1,7 +1,8 @@
 #ifndef __RECT_CLASS_H__
 #define __RECT_CLASS_H__
 
-#define "shapeClass.h"
+#include "shapeClass.h"
+#include "lineClass.h"
 
 class Rect : public Shape
 {
@@ -13,7 +14,7 @@ public:
 	uint32_t getArea(void) const;
 	
 private:
-	uint32_t height_,width_;
+	uint32_t height,width;
 };
 
 #endif

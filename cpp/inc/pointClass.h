@@ -3,16 +3,18 @@
 
 #include <cstdlib>
 
+
 // 2D point
 class Point
 {
 public:
 	Point();
 	Point(const int, const int); 
-	Point(const Point); 
+	Point(const Point&); 
 	~Point(); 
 	
 	void set(const int, const int);
+	void set(const Point&);
 	void setX(const int);
 	void setY(const int);
 	void add(const int, const int);
@@ -21,8 +23,8 @@ public:
 	int getY() const;
 	
 	
-	Point& Point::operator+(const Point&);
-	Point& Point::operator=(const Point&){
+	Point& operator+(const Point&);
+	Point& operator=(const Point&);
 
 private:
 	int x,y;

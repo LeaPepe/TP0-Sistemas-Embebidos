@@ -1,7 +1,8 @@
 #ifndef __LINE_CLASS_H__
 #define __LINE_CLASS_H__
 
-#define "shapeClass.h"
+#include "shapeClass.h"
+#include <math.h>
 
 // 2D Line
 class Line : public Shape

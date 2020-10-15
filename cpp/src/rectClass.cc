@@ -1,3 +1,7 @@
+
+#include "rectClass.h"
+
+
 Rect::Rect(const int x,const int y,const uint32_t w,const uint32_t h){
 	// define rect params
 	setPos(x,y);
@@ -13,19 +17,19 @@ Rect::Rect(const int x,const int y,const uint32_t w,const uint32_t h){
 	Line l4(x+w-1,y,x+w-1,y+h);
 	
 	// apend points of lines to rect
-	if(!points.append(l1.points)){
-		return false;
+	if(!append(l1)){
+		return;//false;
 	}
-	if(!points.append(l2.points)){
-		return false;
+	if(!append(l2)){
+		return;// false;
 	}
-	if(!points.append(l3.points)){
-		return false;
+	if(!append(l3)){
+		return;// false;
 	}
-	if(!points.append(l4.points)){
-		return false;
+	if(!append(l4)){
+		return;// false;
 	}
-	return true;
+	return;// true;
 }
 Rect::~Rect(){
 	// parent takes care

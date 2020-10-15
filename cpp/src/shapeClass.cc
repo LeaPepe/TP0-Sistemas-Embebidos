@@ -1,12 +1,21 @@
+#include "shapeClass.h"
+
 // Constructors
-Shape::Shape(const Shape s){
+Shape::Shape(){
+	// empty
+	pos.set(0,0);
+	nPoints = 0;
+	points = NULL;
+}
+
+Shape::Shape(const Shape& s){
 		
 	// position
 	pos.set(s.pos);
 
 	// alloc mem for coordinates array (maybe proper constructor?)
 	if ( !(points = (Point*)malloc(sizeof(Point)*s.nPoints)) ){
-		return false;
+		return; //false;
 	}
 	nPoints = s.nPoints;
 	
@@ -14,7 +23,7 @@ Shape::Shape(const Shape s){
 	for(size_t i=0; i<nPoints; i++){
 		points[i] = s.points[i];
 	}
-	return true;
+	return; //true;
 }
 
 Shape::Shape(const Point* p, const size_t n, const int x, const int y){
@@ -24,7 +33,7 @@ Shape::Shape(const Point* p, const size_t n, const int x, const int y){
 
 	// alloc mem for points
 	if ( !(points = (Point*)malloc(sizeof(Point)*n)) ){
-		return false;
+		return; //false;
 	}
 	nPoints = n;
 	
@@ -32,7 +41,7 @@ Shape::Shape(const Point* p, const size_t n, const int x, const int y){
 	for(size_t i=0; i<nPoints; i++){
 		points[i] = p[i];
 	}
-	return true;
+	return; //true;
 }
 
 // Destructor
@@ -53,11 +62,11 @@ bool Shape::move(const int dx, const int dy){
 
 	// move each point
 	for(size_t i=0; i<nPoints; i++){
-		Points[i].add(dx,dy);
+		points[i].add(dx,dy);
 	}
 	
 	//move position
-	pos.add(dx,dy)
+	pos.add(dx,dy);
 	
 	//destroy and replace
 	free(points);
@@ -67,7 +76,7 @@ bool Shape::move(const int dx, const int dy){
 
 
 float Shape::distanceFrom(const Shape s) const{
-	return sqrt((pos.x - s.pos.x)^2 + (pos.y - s.pos.y)^2);
+	return sqrt(((pos.getX() - s.pos.getX())^2) + ((pos.getY() - s.pos.getY())^2));
 }
 
 
@@ -76,22 +85,24 @@ bool Shape::rotate(const float){
 	return true;
 }
 
-void Shape::setPos(const int x, const int x){
-	pos.setPos(x,y);
+void Shape::setPos(const int x, const int y){
+	pos.set(x,y);
 }
 
 void Shape::plot(Image* img)const{
 	// for each coordinate, draw the pixel
 	for(size_t i=0; i<nPoints; i++){
 
+
 		//if pixel inside image, draw pixel
-		if((points[i].x >= 0 || points[i].x < img->nCols) && (points[i].y >= 0 || points[i].y < img->nRows)){
-			img->write(points[i].x,points[i].y,HIGH);  // draw pixel
+		
+		if((points[i].getX() >= 0 || (size_t)points[i].getX() < img->getCols()) && (points[i].getY() >= 0 || (size_t)points[i].getY() < img->getRows())){
+			img->write(points[i].getX(),points[i].getY(),HIGH);  // draw pixel
 		}
 	}
 }
 
-bool Shape::append(const Shape s){
+bool Shape::append(const Shape& s){
 	Point* newPoints;
 	
 	// alloc mem for appended array(size1 + size2)
@@ -106,7 +117,7 @@ bool Shape::append(const Shape s){
 	for(size_t i=0; i<s.nPoints; i++){
 		newPoints[i+nPoints] = s.points[i];
 	}
-	nPoints += s.nPoints
+	nPoints += s.nPoints;
 
 	// destroy old array
 	if(points != NULL){ // empty array exception

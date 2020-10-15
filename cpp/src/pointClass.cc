@@ -13,7 +13,7 @@ Point::Point(const int x_,const int y_){
 	y = y_;
 }
 
-Point::Point(const Point p){ 
+Point::Point(const Point& p){ 
 	// Empty
 	x = p.x;
 	y = p.y;
@@ -30,7 +30,7 @@ void Point::set(const int x_, const int y_){
 	y = y_;
 }
 
-void Point::set(const Point p){
+void Point::set(const Point& p){
 	x = p.x;
 	y = p.y;
 }
@@ -42,7 +42,7 @@ void Point::setY(const int y_){
 	y = y_;
 }
 
-void add(const int dx_, const int dx_){
+void Point::add(const int dx, const int dy){
 	x += dx;
 	y += dy;
 }

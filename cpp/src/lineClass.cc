@@ -1,7 +1,9 @@
+#include "lineClass.h"
+
 Line::Line(const int x1,const int y1, const int x2, const int y2){
 
 	//line parameters
-	pos.set(x1,y1);
+	setPos(x1,y1);
 	start.set(x1,y1);
 	end.set(x2,y2);
 	
@@ -13,16 +15,16 @@ Line::Line(const int x1,const int y1, const int x2, const int y2){
 	
 	// mem alloc for line coordinates
 	if ( !(points = (Point*)malloc(sizeof(Point)*n)) ){
-		return false;
+		return; //false;
 	}
 	nPoints = n;
 	
 	//coordinates
 	for(size_t i = 0; i<nPoints; i++){
-		Point[i].x = (int)round(lerp(x1,x2,i*step));
-		Point[i].y = (int)round(lerp(y1,y2,i*step));
+		points[i].setX((int)round(lerp(x1,x2,i*step)));
+		points[i].setY((int)round(lerp(y1,y2,i*step)));
 	}
-	return true;
+	return; //true;
 }
 
 Line::~Line(){
@@ -50,10 +52,10 @@ bool Line::scale(const float){
 	return true;
 }
 float Line::getLength() const{
-	return sqrt((start.x - end.x)^2 + (start.y - end.y)^2);
+	return sqrt(((start.getX() - end.getX())^2) + ((start.getY() - end.getY())^2));
 }
 
-float Line::lerp(uint32_t a,uint32_t b,float t){
+float Line::lerp(int a,int b,float t){
 	if(a == b){
 		return a;
 	}

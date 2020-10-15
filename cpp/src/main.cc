@@ -1,5 +1,6 @@
 #include "main.h"
 
+
 int main(void){
 	
 	int nImages=0;
@@ -10,11 +11,11 @@ int main(void){
 	Rect rect(40,120,60,40);
 	for(int i=0; i<50; i++){
 		// new image
-		Image img;
+		Image img(N_ROWS,N_COLS);
 		
 		//show
-		line.plot(img);
-		rect.plot(img);
+		line.plot(&img);
+		rect.plot(&img);
 		// update
 		line.move(1,1);
 		rect.move(1,-1);
