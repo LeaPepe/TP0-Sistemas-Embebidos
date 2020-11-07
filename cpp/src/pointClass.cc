@@ -1,22 +1,16 @@
 #include "pointClass.h"
 
 // Constructors
-Point::Point(){ 
+Point::Point():x(0),y(0){ 
 	// Empty
-	x = 0;
-	y= 0;
 }
 
-Point::Point(const int x_,const int y_){ 
-	// Empty
-	x = x_;
-	y = y_;
+Point::Point(const int x_,const int y_):x(x_),y(y_){ 
+	//x,y params
 }
 
-Point::Point(const Point& p){ 
-	// Empty
-	x = p.x;
-	y = p.y;
+Point::Point(const Point& p):x(p.x),y(p.y){ 
+	// point param
 }
 
 // Destructor

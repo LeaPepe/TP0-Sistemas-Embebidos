@@ -28,14 +28,14 @@ Image::Image(const size_t nCols_,const size_t nRows_){
 Image::~Image(){
 	// free data cols
 	for(size_t i=0; i<nCols; i++){
-		free(data[i]);
+		if(data[i] != NULL) free(data[i]);
 	}
 	// free row pointers
-	free(data);
+	if(data != NULL)free(data);
 }
 
 void Image::write(const uint32_t x, const uint32_t y, const state_t value){
-	data[x][y] = value;
+		data[x][y] = value;
 }
 
 state_t Image::read(const uint32_t x,const uint32_t y) const{

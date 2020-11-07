@@ -15,8 +15,8 @@ public:
 	float getLength(void) const;
 	
 private:
-	float lerp(int,int,float);
 	Point start,end;
 };
 
+float lerp(int a,int b,float t);
 #endif

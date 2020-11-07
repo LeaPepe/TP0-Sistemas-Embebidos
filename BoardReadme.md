@@ -49,7 +49,7 @@ Cuenta con diversas librerias de interrupciones, con funciones para inicializar 
 
 - GPIO 
 - GPIO group
- - Conversores ADC [ [Header](board/lpc_chip_43xx/inc/adc_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/adc_18xx_43xx.c) ] / DCA [ [Header](board/lpc_chip_43xx/inc/dac_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/dac_18xx_43xx.c) ]. y de alta velocidad HSADC [ [Header](board/lpc_chip_43xx/inc/hsadc_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/hsadc_18xx_43xx.c) ]
+- Conversores ADC [ [Header](board/lpc_chip_43xx/inc/adc_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/adc_18xx_43xx.c) ] / DCA [ [Header](board/lpc_chip_43xx/inc/dac_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/dac_18xx_43xx.c) ]. y de alta velocidad HSADC [ [Header](board/lpc_chip_43xx/inc/hsadc_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/hsadc_18xx_43xx.c) ]
 
 ### Comunicacion
 
@@ -58,7 +58,7 @@ En general, estas librerias poseen la estructura de los registros, definiciones 
 - UART/USART [ [Header](board/lpc_chip_43xx/inc/uart_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/uart_18xx_43xx.c) ]
 - I2C: Posee un [Header](board/lpc_chip_43xx/inc/i2c_common_18xx_43xx.h) general, donde se define la estructura de los registros; y tambien funciones y definiciones para "Master-only" [Header](board/lpc_chip_43xx/inc/i2cm_18xx_43xx.h)|[Source](board/lpc_chip_43xx/src/i2cm_18xx_43xx.c)] y "Slave-only" [ [Header](board/lpc_chip_43xx/inc/i2c_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/i2c_18xx_43xx.c) ]. 
 - SPI [ [Header](board/lpc_chip_43xx/inc/spi_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/spi_18xx_43xx.c) ].
-- Bus CAN [ Header(board/lpc_chip_43xx/inc/ccan_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/ccan_18xx_43xx.c) ].
+- Bus CAN [ [Header](board/lpc_chip_43xx/inc/ccan_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/ccan_18xx_43xx.c) ].
 - Ethernet [ [Header](board/lpc_chip_43xx/inc/enet_18xx_43xx.h) | [Source](board/lpc_chip_43xx/src/enet_18xx_43xx.c) ].
 - USB [ [Header](board/lpc_chip_43xx/inc/usbhs_18xx_43xx.h)| [Source](board/lpc_chip_43xx/src/usbhs_18xx_43xx.c) ].
 

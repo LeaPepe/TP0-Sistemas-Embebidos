@@ -73,11 +73,12 @@ void Shape::rotate(const float angle){
     float sinTheta = sin(angle);
 	Point pivot(pos);
 	int xn,yn;
+	//printf("new shape");
 	for(size_t i=0; i<nPoints; i++){
-		xn = (int)(cosTheta * (points[i].getX() - pivot.getX()) - sinTheta * (points[i].getY() - pivot.getY()) + pivot.getX());
-		yn = (int)(sinTheta * (points[i].getX() - pivot.getX()) + cosTheta * (points[i].getY() - pivot.getY()) + pivot.getY());
-		points[i].setX(round(xn));
-		points[i].setY(round(yn));
+		xn = (int)round(cosTheta * ((float)points[i].getX() - (float)pivot.getX()) - sinTheta * ((float)points[i].getY() - (float)pivot.getY()) + (float)pivot.getX());
+		yn = (int)round(sinTheta * ((float)points[i].getX() - (float)pivot.getX()) + cosTheta * ((float)points[i].getY() - (float)pivot.getY()) + (float)pivot.getY());
+		points[i].setX(xn);
+		points[i].setY(yn);
 	}
 }
 
@@ -88,12 +89,10 @@ void Shape::setPos(const int x, const int y){
 void Shape::plot(Image* img)const{
 	// for each point, draw the pixel
 	for(size_t i=0; i<nPoints; i++){
-
-
 		//if pixel inside image, draw pixel
-		
-		if((points[i].getX() >= 0 || (size_t)points[i].getX() < img->getCols()) && (points[i].getY() >= 0 || (size_t)points[i].getY() < img->getRows())){
-			img->write(points[i].getX(),points[i].getY(),HIGH);  // draw pixel
+		if(points[i].getX() >= 0 && points[i].getX() < (int)img->getCols() && 
+		   points[i].getY() >= 0 && points[i].getY() < (int)img->getRows()){
+				img->write(points[i].getX(),points[i].getY(),HIGH);  // draw pixel
 		}
 	}
 }
@@ -113,7 +112,7 @@ bool Shape::append(const Shape& s){
 	for(size_t i=0; i<s.nPoints; i++){
 		newPoints[i+nPoints] = s.points[i];
 	}
-	nPoints += s.nPoints;
+	nPoints = nPoints + s.nPoints;
 
 	// destroy old array
 	if(points != NULL){ // empty array exception

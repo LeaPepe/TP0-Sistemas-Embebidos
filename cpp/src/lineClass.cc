@@ -1,4 +1,10 @@
 #include "lineClass.h"
+float lerp(int a,int b,float t){
+	if(a == b){
+		return a;
+	}
+	return (1 - t) * a + t * b;
+}
 
 Line::Line(const int x1,const int y1, const int x2, const int y2){
 
@@ -46,9 +52,3 @@ float Line::getLength() const{
 	return sqrt(((start.getX() - end.getX())^2) + ((start.getY() - end.getY())^2));
 }
 
-float Line::lerp(int a,int b,float t){
-	if(a == b){
-		return a;
-	}
-	return (1 - t) * a + t * b;
-}
