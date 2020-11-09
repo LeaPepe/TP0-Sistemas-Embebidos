@@ -15,3 +15,5 @@ Para convertir un conjunto de imágenes .pbm a un .gif animado, se sugiere hacer
 4. Clickear en "Make a GIF!"
 
 5. Seleccionar "Save" para descargar el gif.
+
+![Alt Text](/ezgif.com-gif-maker.gif)
