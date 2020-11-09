@@ -20,7 +20,7 @@ typedef struct {
 *		@params: recibe el puntero al objeto, la posición en el espacio (posición en x e y), la altura y el ancho del rectángulo
 *		@return: Devuelve verdadero sii encontró memoria para guardar el objeto.
 **/
-bool rectangle_ctor(rectangle_t *me, uint32_t position_x, uint32_t position_y, 
+bool rectangle_ctor(rectangle_t *me, int position_x, int position_y, 
 					uint32_t height, uint32_t width);
 
 /** 	@brief: Rota al rectángulo un cierto ángulo.
@@ -30,7 +30,7 @@ bool rectangle_ctor(rectangle_t *me, uint32_t position_x, uint32_t position_y,
 
 void rectangle_dtor(rectangle_t *me);
 
-bool rectangle_move(rectangle_t *me, uint32_t dx, uint32_t dy);
+bool rectangle_move(rectangle_t *me, int dx, int dy);
 
 
 bool rectangle_rotate(rectangle_t *me, float angle);

@@ -19,7 +19,7 @@ typedef struct {
 *		@params: recibe el puntero al objeto y las coordenadas para definir el segmento de línea.
 *		@return: Devuelve verdadero sii encontró memoria para guardar el objeto.
 **/
-bool line_ctor(line_t *me, uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2);
+bool line_ctor(line_t *me, int x1, int y1, int x2, int y2);
 
 void line_dtor(line_t *me);
 /** 	@brief: Rotar al segmento dejando fijo el punto de partida.
@@ -42,7 +42,7 @@ bool line_scale(line_t *me, float factor);
 **/
 float line_get_lenght(line_t *me);
 
-bool line_move(line_t *me, uint32_t dx, uint32_t dy);
+bool line_move(line_t *me, int dx, int dy);
 
 bool line_plot(line_t *me, image_t *image);
 

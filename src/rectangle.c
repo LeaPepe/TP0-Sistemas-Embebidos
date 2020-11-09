@@ -3,7 +3,7 @@
 #include <math.h>
 
 
-bool rectangle_ctor(rectangle_t *me, uint32_t position_x, uint32_t position_y, 
+bool rectangle_ctor(rectangle_t *me, int position_x, int position_y, 
 					uint32_t height, uint32_t width){
 	// define rect params
 	me->super.position.x = position_x;
@@ -64,7 +64,7 @@ void rectangle_dtor(rectangle_t *me){
 	return;
 }
 
-bool rectangle_move(rectangle_t *me, uint32_t dx, uint32_t dy){
+bool rectangle_move(rectangle_t *me, int dx, int dy){
 	
 	// move coordinates
 	if(!shape_move(&me->super,dx,dy)){
@@ -74,12 +74,14 @@ bool rectangle_move(rectangle_t *me, uint32_t dx, uint32_t dy){
 	return true;
 }
 bool rectangle_rotate(rectangle_t *me, float angle){
-	// Completar
+	bool isSuccess = shape_rotate(&me->super,angle);
+	if(isSuccess) me->rotation_angle += angle; 
+	return isSuccess;
 }
 
 
 uint32_t rectangle_get_area(rectangle_t *me){
-	// Completar
+	return me->height * me->width;
 }
 
 bool rectangle_plot(rectangle_t *me, image_t *image){

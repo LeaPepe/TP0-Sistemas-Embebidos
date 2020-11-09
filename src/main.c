@@ -1,5 +1,6 @@
 
 #include <stdio.h>
+#include <math.h>
 #include "image.h"
 #include "shape.h"
 #include "line.h"
@@ -11,53 +12,56 @@
 #define N_ROWS			200 	// Cantidad de filas
 #define N_COLS			200		// Cantidad de columnas
 
+#define PI 3.1415926
 
 /* Ejemplo de uso de las funciones de la clase "imagen" */
 
 int main(void){
-	
 	image_t img;
 	int img_count=0;
 	line_t line;
 	rectangle_t rect;
 	char img_name[MAX_IMG_NAME];
 	
-	// Construyo una linea
-	if(!line_ctor(&line,10,10,100,40)){
+	// Line
+	if(!line_ctor(&line,20,10,40,40)){
 		printf("cant build shape");
 		return 1;
 	}
-	//construyo un rectangulo
-	if(!rectangle_ctor(&rect,15,15,50,30)){
+	// Rect
+	if(!rectangle_ctor(&rect,40,120,40,40)){
 		printf("cant build shape");
 		return 1;
 	}
 	
-	for(int i=0; i<50; i++){
-		// Construyo el objeto "imagen"
+	for(int i=0; i<72; i++){
+		// image
 		image_ctor(&img,N_ROWS,N_COLS); 
 
-		// las imprimo en la imagen
+		// plot
 		line_plot(&line,&img);
 		rectangle_plot(&rect,&img);
 		
-		// muevo las formas
-		line_move(&line,1,2);
-		rectangle_move(&rect,2,1);
+		// move
+		line_move(&line,3,2);
+		rectangle_move(&rect,1,2);
 		
-		
-		// Lo guardo en un archivo
+		// rotate
+		line_rotate(&line,PI/8);
+		rectangle_rotate(&rect,-PI/8);
+		// save
 		sprintf(img_name,"./images/img%.3d.pbm",img_count); 
 		image_to_file(&img,img_name); 
 		
-		// Libero memoria
+		// mem
 		image_dtor(&img); 
 
 		++img_count;
 	}
-	
-	shape_dtor((shape_t*)&line);
-	shape_dtor((shape_t*)&rect);
+	printf("bye\r\n");
+	// mem
+	line_dtor(&line);
+	rectangle_dtor(&rect);
 	
 	return 0;
 }

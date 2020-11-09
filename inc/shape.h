@@ -1,6 +1,8 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
+#include <stdlib.h>
+#include <math.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdbool.h>
@@ -9,8 +11,8 @@
 
 /* Coordenada de la imagen (punto en el espacio de 2D) */ 
 typedef struct {
-	uint32_t x; // Coordenada en x
-	uint32_t y; // Coordenada en y
+	int x; // Coordenada en x
+	int y; // Coordenada en y
 } coordinate_t;
 
 /* Vector de coordenadas almacenado dinámicamente */
@@ -31,7 +33,7 @@ typedef	struct {
 *		@params: recibe el puntero al objeto, y la posición en el espacio (posición en x e y)
 *		@return: Devuelve verdadero sii encontró memoria para guardar el objeto.
 **/
-bool shape_ctor(shape_t *me, coordinates_array_t *array, uint32_t position_x, uint32_t position_y);
+bool shape_ctor(shape_t *me, coordinates_array_t *array, int position_x, int position_y);
 
 
 /** 	@brief: Destructor del objeto "figura"
@@ -45,7 +47,7 @@ void shape_dtor(shape_t *me);
 *		@params: Recibe el puntero al objeto y la cantidad de espacio que se quiere trasladar la figura.
 *		@return: verdadero si la operación se realizó exitosamente
 **/
-bool shape_move(shape_t *me, uint32_t dx, uint32_t dy);
+bool shape_move(shape_t *me, int dx, int dy);
 
 
 /** 	@brief: Calcula la distancia a la posición de otra figura
@@ -66,4 +68,6 @@ bool shape_plot(shape_t *me, image_t *image);
 *		@return: verdadero si la operación se realizó exitosamente
 **/
 bool coordinates_append(coordinates_array_t* array1, coordinates_array_t* array2);
+
+bool shape_rotate(shape_t *me, float angle);
 #endif

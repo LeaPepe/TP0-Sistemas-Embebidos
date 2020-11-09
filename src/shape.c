@@ -1,19 +1,20 @@
-#include <stdlib.h>
+
 #include "shape.h"
 
 
 // constructor
-bool shape_ctor(shape_t *me, coordinates_array_t *array, uint32_t position_x, uint32_t position_y){
+bool shape_ctor(shape_t *me, coordinates_array_t *array, int position_x, int position_y){
+	
+	if ( !(me->array.coordinates = (coordinate_t*)malloc(sizeof(coordinate_t)*array->n_array)) ){
+		printf("cant create coordinates");
+		return false;
+	}
 	
 	// position
 	me->position.x = position_x;
 	me->position.y = position_y;
 	
-	
-	// alloc mem for coordinates array (maybe proper constructor?)
-	if ( !(me->array.coordinates = (coordinate_t*)malloc(sizeof(coordinate_t)*array->n_array)) ){
-		return false;
-	}
+	// number of points
 	me->array.n_array = array->n_array;
 	
 	// copy array
@@ -27,38 +28,38 @@ bool shape_ctor(shape_t *me, coordinates_array_t *array, uint32_t position_x, ui
 // destructor
 void shape_dtor(shape_t *me){
 	// free the only array
-	free(me->array.coordinates);
+	if (me->array.coordinates != NULL) free(me->array.coordinates);
 }
 
 // move shape
-bool shape_move(shape_t *me, uint32_t dx, uint32_t dy){
-	
-	//make new array for moving 
-	coordinate_t *moved_coordinates;
-	if ( !(moved_coordinates = (coordinate_t*)malloc(sizeof(coordinate_t)*me->array.n_array)) ){
-		return false;
-	}
-	
-	// for each coordinate, move it
+bool shape_move(shape_t *me, int dx, int dy){
+	// move each point
 	for(uint32_t i=0; i<me->array.n_array; i++){
-		// move coordinate, only positive so no troubles.
-		moved_coordinates[i].x = me->array.coordinates[i].x + dx;
-		moved_coordinates[i].y = me->array.coordinates[i].y + dy;
+		me->array.coordinates[i].x = me->array.coordinates[i].x + dx;
+		me->array.coordinates[i].y = me->array.coordinates[i].y + dy;
 	}
-	
-	//move position
-	me->position.x += dx;
-	me->position.y += dy;
-	
-	//destroy and replace
-	free(me->array.coordinates);
-	me->array.coordinates = moved_coordinates;
+	//move position also
+	me->position.x = me->position.x + dx;
+	me->position.y = me->position.y + dy;
 	return true;
 }
 
 
 bool shape_rotate(shape_t *me, float angle){
-	// Completar
+	float cosA = cos(angle);
+    float sinA = sin(angle);
+	int pivot_x = me->position.x;
+	int pivot_y = me->position.y;
+	int xn,yn;
+	for(uint32_t i=0; i < me->array.n_array; i++){
+		int px = me->array.coordinates[i].x;
+		int py = me->array.coordinates[i].y;
+		xn = (int)round(cosA * (px - pivot_x) - sinA * (py - pivot_y) + pivot_x);
+		yn = (int)round(sinA * (px - pivot_x) + cosA * (py - pivot_y) + pivot_y);
+		me->array.coordinates[i].x = xn;
+		me->array.coordinates[i].y = yn;
+		//printf("(%i,%i) at %i. n = %i \r\n",xn,yn,i,me->array.n_array);
+	}
 	return true;
 }
 
@@ -74,7 +75,8 @@ bool shape_plot(shape_t *me, image_t *image){
 		
 		coordinate_t* pixel = &(me->array.coordinates[i]); // pointer for tidyness
 		//if pixel inside image, draw pixel
-		if((pixel->x >= 0 || pixel->x < image->n_cols) && (pixel->y >= 0 || pixel->y < image->n_rows)){
+		if((pixel->x >= 0 && pixel->x < image->n_cols) && 
+	       (pixel->y >= 0 && pixel->y < image->n_rows)){
 			image_write(image,pixel->y,pixel->x,HIGH);  // draw pixel
 		}
 	}
@@ -101,13 +103,11 @@ bool coordinates_append(coordinates_array_t* array1, coordinates_array_t* array2
 		coords[i+array1->n_array].x = array2->coordinates[i].x;
 		coords[i+array1->n_array].y = array2->coordinates[i].y;
 	}
-	
-	// free old array and assign appended array
-	array1->n_array += array2->n_array;
+	array1->n_array = array1->n_array + array2->n_array;
+	// free old array
 	if(array1->coordinates != NULL){ // empty array exception
 		free(array1->coordinates);
 	}
 	array1->coordinates = coords; // set new array
-	
 	return true;
 }
